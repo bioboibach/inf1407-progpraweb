@@ -1,0 +1,26 @@
+{% extends 'Resenhas/base.html' %}
+{% load static %}
+{% block title %}Resenhas{% endblock %}
+{% block content %}
+
+<br>
+<br>
+<div class="container">
+  <div>
+    <H1> Escreva resenhas de produtos!</H1>
+  </div>
+    
+  
+  <br>
+  <div class="row justify-content-evenly">
+    <a href="" class="btn btn-primary col-md-3">Ler resenhas</a>
+    {% if user.is_authenticated %}
+    <a href="" class="btn btn-primary col-md-3">Escrever resenha</a>
+    {% else %}
+    <a href="{% url 'login' %}" class="btn btn-primary col-md-3">Escrever resenha</a>
+    {% endif %}
+    
+  </div>
+</div>
+
+{% endblock %}
