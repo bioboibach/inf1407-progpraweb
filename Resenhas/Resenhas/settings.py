@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'Resenhas',
     'accounts',
+    'posts',
 ]
 
 MIDDLEWARE = [

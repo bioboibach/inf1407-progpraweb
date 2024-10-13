@@ -1,0 +1,19 @@
+{% extends 'Resenhas/base.html' %}
+{% load static %}
+{% block content %}
+
+<h2>{{ titulo }}</h2>
+
+<br>
+<div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table class='formulario'>
+            {{ formulario.as_table }}
+        </table>
+        <br>
+        <input class="btn btn-primary" type="submit" value="{{ submitText }}" />
+    </form>
+</div>
+
+{% endblock %}
