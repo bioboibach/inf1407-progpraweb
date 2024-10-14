@@ -24,7 +24,7 @@ class ReviewCreateView(View):
             "titulo": "Escreva uma Resenha",
             "submitText": "Enviar",
         }
-        return render(request, "reviews/review_form.html", contexto)
+        return render(request, "reviews/review_form_create.html", contexto)
     
     def post(self, request):
         product = request.POST.get('product')
@@ -41,15 +41,15 @@ class ReviewUpdateView(View):
     def get(self, request, pk):
         review = get_object_or_404(Review, pk=pk)
         form = ReviewForm(instance=review)
-        return render(request, 'reviews/review_form.html', {'formulario': form, 'titulo': 'Atualizar Resenha', 'submitText': 'Atualizar'})
+        return render(request, 'reviews/review_form_update.html', {'formulario': form, 'titulo': 'Atualizar Resenha', 'submitText': 'Atualizar'})
     
     def post(self, request, pk):
         review = get_object_or_404(Review, pk=pk)
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
             form.save()
-            return redirect('reviews:review-list')
-        return render(request, 'reviews/review_form.html', {'formulario': form, 'titulo': 'Atualizar Resenha', 'submitText': 'Atualizar'})
+            return redirect('reviews:user-review-list')
+        return render(request, 'reviews/review_form_update.html', {'formulario': form, 'titulo': 'Atualizar Resenha', 'submitText': 'Atualizar'})
     
 class UserReviewListView(View):
     def get(self, request, *args, **kwargs):
