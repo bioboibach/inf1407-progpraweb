@@ -13,9 +13,9 @@
   
   <br>
   <div class="row justify-content-evenly">
-    <a href="" class="btn btn-primary col-md-3">Ler resenhas</a>
+    <a href="{% url 'reviews:review-list' %}" class="btn btn-primary col-md-3">Ler resenhas</a>
     {% if user.is_authenticated %}
-    <a href="{% url 'posts:post-create' %}" class="btn btn-primary col-md-3">Escrever resenha</a>
+    <a href="{% url 'reviews:review-create' %}" class="btn btn-primary col-md-3">Escrever resenha</a>
     {% else %}
     <a href="{% url 'login' %}" class="btn btn-primary col-md-3">Escrever resenha</a>
     {% endif %}
