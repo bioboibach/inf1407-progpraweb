@@ -22,7 +22,7 @@ class ReviewCreateView(View):
         contexto = {
             "formulario": ReviewForm,
             "titulo": "Escreva uma Resenha",
-            "submitText": "Enviar",
+            "submitText": "Publicar",
         }
         return render(request, "reviews/review_form_create.html", contexto)
     
