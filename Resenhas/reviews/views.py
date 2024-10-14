@@ -36,3 +36,27 @@ class ReviewCreateView(View):
         post = Review(product=product, content=content, product_url=product_url, author=author, score=score, brand=brand)
         post.save()
         return HttpResponseRedirect(reverse_lazy('reviews:review-list'))
+    
+class ReviewUpdateView(View):
+    def get(self, request, pk):
+        review = get_object_or_404(Review, pk=pk)
+        form = ReviewForm(instance=review)
+        return render(request, 'reviews/review_form.html', {'formulario': form, 'titulo': 'Atualizar Resenha', 'submitText': 'Atualizar'})
+    
+    def post(self, request, pk):
+        review = get_object_or_404(Review, pk=pk)
+        form = ReviewForm(request.POST, instance=review)
+        if form.is_valid():
+            form.save()
+            return redirect('reviews:review-list')
+        return render(request, 'reviews/review_form.html', {'formulario': form, 'titulo': 'Atualizar Resenha', 'submitText': 'Atualizar'})
+    
+class UserReviewListView(View):
+    def get(self, request, *args, **kwargs):
+        reviews = Review.objects.filter(author = get_user(request))
+        
+        contexto = {
+            "reviews": reviews,
+        }
+        return render(request, "reviews/user_review_list.html", contexto)
+
