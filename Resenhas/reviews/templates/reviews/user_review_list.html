@@ -22,10 +22,11 @@
 
         <div class="col-sm-4">
             <div class="container">
-                <button type="button" class="btn card text-dark bg-light sm-3" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 20rem;">
+                <button type="button" class="btn card text-dark bg-light sm-3" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" style="width: 20rem;">
                     <h5 class="card-title text-sm-center">{{review.product}} - {{review.score}}/5</h5>
 
-                    
+
                     <div class="card-body">
                         <h5 class="card-subtitle mb-2 text-muted">{{review.brand}}</h5>
                     </div>
@@ -38,29 +39,58 @@
             </div>
         </div>
 
+        <!-- Modal de visualizacao -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="exampleModalLabel">{{review.product}}</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h5>Nota: {{review.score}}/5</h5>
-                    <h5>Fabricante: {{review.brand}}</h5>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">{{review.product}}</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>Nota: {{review.score}}/5</h5>
+                        <h5>Fabricante: {{review.brand}}</h5>
 
-                    
-                </div>
-                <div class="modal-body">
 
-                    <p>{{review.content}}</p>
+                    </div>
+                    <div class="modal-body">
 
+                        <p>{{review.content}}</p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <a href="{% url 'reviews:review-update' pk=review.id %}" class="btn btn-primary col-md-5">
+                            Editar
+                        </a>
+                        <a class="btn btn-danger col-md-3" data-bs-toggle="modal" data-bs-target="#delete-review-{{review.id}}">
+                            Apagar
+                        </a>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" href="{% url 'reviews:review-create' %}">Criar</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+
+        <!-- Modal apagar -->
+        <div class="modal fade" id="delete-review-{{review.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Apagar</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Deseja apagar esta resenha?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <form action="{% url 'reviews:review-delete' pk=review.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Sim</button>
+                        </form>
+                    </div>
                 </div>
-              </div>
             </div>
         </div>
 
@@ -69,7 +99,7 @@
             <th colspan="5">Não há resenhas cadastradas</th>
         </tr>
 
-        
+
         {% endfor %}
     </div>
 </div>

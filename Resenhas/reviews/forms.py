@@ -17,11 +17,11 @@ class ReviewForm(forms.ModelForm):
     )
 
     RATING_CHOICES = [
-        (1, '1 Star'),
-        (2, '2 Stars'),
-        (3, '3 Stars'),
-        (4, '4 Stars'),
-        (5, '5 Stars'),
+        (1, '⭐'),
+        (2, '⭐⭐'),
+        (3, '⭐⭐⭐'),
+        (4, '⭐⭐⭐⭐'),
+        (5, '⭐⭐⭐⭐⭐'),
     ]
     
     score = forms.ChoiceField(choices=RATING_CHOICES, widget=forms.RadioSelect)
@@ -42,10 +42,11 @@ class ReviewForm(forms.ModelForm):
 
     class Meta:
         model = Review
-        fields = ['product','brand', 'content', 'product_url']
+        fields = ['product','brand', 'content', 'product_url','score']
         widgets = {
             'product': forms.TextInput(attrs={'class': 'form-control'}),
             'brand': forms.TextInput(attrs={'class': 'form-control'}),
+            'score': forms.RadioSelect(),
             'content': forms.Textarea(attrs={'class': 'form-control'}),
             'product_url': forms.URLInput(attrs={'class': 'form-control'}),
         }

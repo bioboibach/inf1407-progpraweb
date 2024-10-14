@@ -59,4 +59,10 @@ class UserReviewListView(View):
             "reviews": reviews,
         }
         return render(request, "reviews/user_review_list.html", contexto)
+    
+class ReviewDeleteView(View):
+    def post(self, request, pk, *args, **kwargs):
+        review = get_object_or_404(Review, pk=pk)
+        review.delete()
+        return redirect('reviews:user-review-list')
 
