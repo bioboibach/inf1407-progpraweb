@@ -1,32 +1,39 @@
 # Repositório de INF1407 - Programação para Web
 Repositório para Disciplina INF1407 - Programação Para a Web, 09/09/2024
-## Tema
-[TBD]
+
 
 # Trabalho 1
 
-## Requisitos
-Fazer um site em Python Djando, HTML, CSS (sem JS)
-- Conter operações CRUD (SQLite)
-- Pubicar em um servidor web (AWS ou fazer em Docker)
-- Login de acesso: usuários com diferentes visões e permissões
-
 ## Relatorio
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dignissim felis nulla, in ultrices velit efficitur nec. Ut efficitur ante ut semper blandit. Fusce lorem leo, rutrum eu mauris id, dictum dignissim libero.
+Fizemos um site que permite usuários postarem resenhas de produtos que compraram na internet, dando uma nota de 1 a 5 estrelas e descrevendo com mais detalhes suas experiências com o produto.
 
-### Escopo do Site
-Etiam arcu mauris, rhoncus non molestie nec, posuere a massa. Cras rutrum eget tellus a pretium. Aenean sed semper turpis. Ut porta interdum diam, a interdum diam sagittis eget. Fusce dapibus dui vitae eros porttitor commodo. 
+Cada resenha é composta de:
+- nome do produto
+- fabricante
+- resenha/descrição
+- url do produto na loja
+- nota 1-5 para o produto
+
+Cada usuário é capaz de:
+- criar uma ou mais resenhas de produtos
+- ler resenhas publicadas por outros usuários
+- editar próprias resenhas
+- apagar próprias resenhas
+ 
 
 ### Manual do Usuário
-Pellentesque sit amet nibh a arcu rhoncus imperdiet. Morbi hendrerit ipsum sit amet lectus mollis mollis. Etiam auctor dui eget tortor dictum, in eleifend dui venenatis. Quisque ipsum quam, condimentum ac ipsum euismod, fringilla iaculis nisi.
+Na home page, o usuário terá três opções: ler resenhas, escrever sua própria resenha ou fazer login. A opção de escrever a própria resenha fará com que o usuário faça login ou se cadastre antes. Após o login, o usuário poderá publicar uma resenha e seu nome aparecerá no canto direito do navbar como um menu dropdown, contendo as opçoes: "Minhas Resenhas" e "Logout".
+
+O usuário apenas pode editar ou apagar postagens que aparecem na página "Minhas Resenhas". As mesmas postagens não possuem essas opções na página com as resenhas dos demais usuários.
 
 ### O que deu Certo
-Cras tincidunt leo turpis, eu commodo justo bibendum eu. Suspendisse tempor vulputate arcu, ut ultricies purus pharetra a. Nam egestas lacus et mauris ultricies dignissim. Phasellus consequat metus id turpis placerat, et porta tortor maximus.
+ - criação, edição e remoção de resenhas de produtos
+ - registro de usuário
+ - login e logout de usuário
+ - área restrita para usuário autenticado
 
 ### O que não Funcionou
-Pellentesque ac hendrerit tortor. Cras fringilla aliquet consequat. Cras id magna nisi. Duis finibus, ipsum ut auctor convallis, elit lacus fringilla lorem, dapibus vestibulum libero risus vel est. Integer facilisis quam et nisi mattis tincidunt. 
+ - troca e recuperação de senha
+ - remoção de cadastro
 
----
----
-
-Autores: Bernardo Bach, Leonardo _______
+Autores: Bernardo Bach (1613231), Leonardo Santiago (2410725)
