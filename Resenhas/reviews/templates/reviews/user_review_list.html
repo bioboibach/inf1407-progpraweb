@@ -21,7 +21,7 @@
         <div class="col-sm-4">
             <div class="container">
                 <button type="button" class="btn card text-dark bg-light sm-3" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal" style="width: 20rem;">
+                    data-bs-target="#exampleModal{{review.id}}" style="width: 20rem;">
                     <h5 class="card-title text-sm-center">{{review.product}} - {{review.score}}/5</h5>
 
 
@@ -38,7 +38,7 @@
         </div>
 
         <!-- Modal de visualizacao -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="exampleModal{{review.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
